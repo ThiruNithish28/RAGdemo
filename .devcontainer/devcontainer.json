@@ -1,0 +1,65 @@
+{
+  "name": "Spring Boot RAG + PgVector Dev Environment",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version":"20"
+    }
+  },
+  "forwardPorts": [
+    8080,
+    5432,
+    3000,
+    5173
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Frontend (React/Next.js)"
+    },
+    "5173": {
+      "label": "Frontend (Vite)"
+    },
+    "5432": {
+      "label": "PostgreSQL + PgVector"
+    },
+    "8080": {
+      "label": "Spring Boot App"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot",
+        "vscjava.vscode-spring-initializr",
+        "vscjava.vscode-spring-boot-dashboard",
+        "redhat.java",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-gradle",
+        "ms-azuretools.vscode-docker",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
+        "humao.rest-client",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "GitHub.copilot"
+      ],
+      "settings": {
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-21",
+            "path": "/usr/local/sdkman/candidates/java/current",
+            "default": true
+          }
+        ],
+        "spring-boot.ls.java.home": "/usr/local/sdkman/candidates/java/current",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4
+      }
+    }
+  }
+}
